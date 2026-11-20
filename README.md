@@ -2,6 +2,8 @@
 
 Implementacja klasycznej gry logicznej Mastermind w języku Python z interfejsem graficznym opartym na **PySide6**. Zadaniem gracza jest odgadnięcie sekretnego kodu kolorów w ograniczonej liczbie prób.
 
+<img width="1091" height="1086" alt="mastermind" src="https://github.com/user-attachments/assets/e28b8a6b-da33-4d1c-9f03-823023fddfe5" />
+
 ## Funkcje gry
 
 * **Konfigurowalny poziom trudności:** Możliwość ustawienia liczby pól (3–6) oraz maksymalnej liczby prób (5–20) w oknie menu.
