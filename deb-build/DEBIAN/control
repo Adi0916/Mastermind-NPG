@@ -1,0 +1,8 @@
+Package: mastermind-npg
+Version: 0.1.0
+Section: games
+Priority: optional
+Architecture: amd64
+Depends: bash
+Maintainer: misko <michal.290305.sk@gmail.com>
+Description: Mastermind NPG with bundled virtual environment

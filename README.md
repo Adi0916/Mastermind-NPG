@@ -1,84 +1,77 @@
-# Mastermind Game - README (Polska wersja)
-### Do przepisania (jeszcze raz ;[)
+# Mastermind NPG
 
-## Opis projektu
-Jest to implementacja klasycznej gry logicznej Mastermind w języku Python, wykorzystująca bibliotekę PySide6 do tworzenia interfejsu graficznego. Gracz musi odgadnąć sekretny kod kolorów w ograniczonej liczbie prób.
+A desktop implementation of the classic Mastermind logic game written in Python with a **PySide6** graphical user interface. Try to crack the secret color code within a limited number of attempts.
 
-## Opis plików
+## Features
 
-### `boxy_kolorowe.py`
-- Zawiera klasę `ColorBox` reprezentującą interaktywne kolorowe pola w grze.
-- Funkcjonalności:
-  - 6 różnych kolorów (Czerwony, Niebieski, Zielony, Żółty, Fioletowy, Pomarańczowy)
-  - Klikalne pola zmieniające kolory w cyklu
-  - Wizualna reprezentacja z nazwami kolorów i stylizowanym tłem
+- **Customizable Difficulty:** Adjust the number of code slots (3–6) and maximum attempts (5–20) in the options menu.
+- **Hardcore Mode:** Fixed 3-slot, 10-attempt challenge with move feedback history hidden.
+- **Attempt History & Feedback:** Track your guesses with indicators for exact matches (*"W dobrym miejscu"*) and color-only matches (*"W złym miejscu"*).
+- **Persistent Statistics:** Tracks total wins and losses across sessions.
+- **Responsive GUI:** Interactive color-cycling tiles built with Qt (`PySide6`).
 
-### `interfejs.py`
-- Główny interfejs gry (klasa `MyApp`)
-- Funkcjonalności:
-  - Interaktywna plansza z kolorowymi polami
-  - Przycisk "Zatwierdź" do sprawdzania propozycji
-  - Historia gry
-  - Licznik pozostałych prób
-  - Informacja zwrotna (kolory na dobrych i złych pozycjach)
-  - Statystyki (wygrane/przegrane)
-  - Integracja z menu
+## Installation & Running
 
-### `losowanie_kolorów.py`
-- Zawiera logikę gry:
-  - Klasa `Kolor` do losowego generowania kolorów
-  - Funkcja `sprawdz_kod` porównująca propozycję gracza z kodem tajnym
-  - Zwraca informację o poprawnych pozycjach i kolorach na złych pozycjach
+### Option 1: Linux (`.deb` package)
 
-### `main.py`
-- Punkt wejścia do aplikacji
-- Inicjalizuje i uruchamia aplikację Qt z głównym oknem gry
+1. Download `mastermind-npg_0.1.0_amd64.deb` from the [GitHub Releases](https://github.com/Adi0916/Mastermind-NPG/releases) page.
+2. Install the package using `apt`:
+   ```bash
+   sudo apt install ./mastermind-npg_0.1.0_amd64.deb
+   ```
+3. Launch the game from your terminal:
+   ```bash
+   mastermind-npg
+   ```
 
-### `menu.py`
-- Implementuje menu opcji gry (klasa `OptionsDialog`)
-- Funkcjonalności:
-  - Ustawienie customowej trudności
-  - Wyświetlanie statystyk
-  - Tryb hardcore
+### Option 2: Windows / macOS / Linux (via `uv`)
 
-### `setup.py`
-- Plik konfiguracyjny określający zależności (PySide6)
+1. Make sure you have [uv](https://docs.astral.sh/uv/) installed.
+2. Clone the repository (or download and extract the source archive from Releases):
+   ```bash
+   git clone https://github.com/Adi0916/Mastermind-NPG.git
+   cd Mastermind-NPG
+   ```
+3. Install dependencies and create the virtual environment:
+   ```bash
+   uv sync
+   ```
+4. Run the application:
+   ```bash
+   uv run src/mastermind_npg/__init__.py
+   ```
 
-### `statystyki.txt`
-- Przechowuje statystyki gry:
-  - Pierwsza linia: Liczba wygranych (np. 7)
-  - Druga linia: Liczba przegranych (np. 24)
+## How to Play
 
-### `commity.csv`
-- Historia commitów pokazująca:
-  - Datę commita
-  - Liczbę commitów danego dnia
-  - Nazwiska współtwórców (M.Skowron, K.Salamon, J.Siuzdak, M.Sakłak)
+1. Launch the application.
+2. *(Optional)* Open **Menu** to configure the difficulty level (number of slots and attempts), toggle **Hardcore Mode**, or view your win/loss **Statistics**.
+3. Click on each colored box to cycle through the 6 available colors (*Red, Blue, Green, Yellow, Purple, Orange*).
+4. Click **Zatwierdź** (Submit) to check your guess:
+   - **W dobrym miejscu (In the right spot):** Right color in the exact right position.
+   - **W złym miejscu (In the wrong spot):** Right color, but in a different position.
+5. Guess the entire secret code before running out of attempts to win.
 
-## Jak grać
-1. Uruchom plik `start.bat` aby rozpocząć grę
-2. Wybierz poziom trudności i liczbę pól w menu
-3. Klikaj na pola aby zmieniać kolory
-4. Naciśnij "Zatwierdź" aby sprawdzić swoją propozycję
-5. Otrzymaj informację zwrotną:
-   - "W dobrym miejscu": Poprawny kolor na dobrej pozycji
-   - "W złym miejscu": Poprawny kolor na złej pozycji
-6. Wygraj odgadując wszystkie kolory przed wyczerpaniem prób
+## Project Structure
 
-## Funkcje gry
-- Regulowana trudność (liczba prób i długość kodu)
-- Śledzenie historii gry
-- Statystyki wygranych i przegranych
-- Responsywny interfejs graficzny
-- Kolorowa informacja zwrotna
-- Tryb hardcore
+```text
+Mastermind-NPG/
+├── pyproject.toml                  # Project configuration and dependencies (PySide6)
+├── uv.lock                         # Locked dependency versions for uv
+└── src/
+    ├── mastermind_npg/
+    │   └── __init__.py             # Application entry point (initializes QApplication)
+    ├── gui/
+    │   ├── interfejs.py            # Main game window, board layout, game loop, and stats I/O
+    │   ├── boxy_kolorowe.py        # ColorBox widget handling color cycling and styling
+    │   └── menu.py                 # OptionsDialog (difficulty settings, Hardcore Mode, stats)
+    └── rand/
+        ├── losowanie_kolorów.py    # Secret code generator (Kolor) and guess checker (sprawdz_kod)
+        └── statystyki.txt          # Plain-text win/loss counter (line 1: wins, line 2: losses)
+```
 
-## Wymagania
-- Python 3.x
-- PySide6 (zainstaluje się automatycznie przez setup.py)
+## Contributors
 
-## Współtwórcy
-- M.Skowron
-- K.Salamon
-- J.Siuzdak
-- M.Sakłak
+- M. Skowron
+- K. Salamon
+- J. Siuzdak
+- M. Sakłak
