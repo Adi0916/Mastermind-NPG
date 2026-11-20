@@ -2,11 +2,15 @@
 # -*- coding: utf-8 -*-
 from PySide6.QtWidgets import QApplication
 import sys
-from interfejs import MyApp
+from gui.interfejs import MyApp
 
-# Uruchomienie
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     window = MyApp()
     window.show()
     sys.exit(app.exec())
+
+# Uruchomienie
+if __name__ == "__main__":
+    main()
+

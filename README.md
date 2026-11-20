@@ -1,4 +1,5 @@
 # Mastermind Game - README (Polska wersja)
+### Do przepisania (jeszcze raz ;[)
 
 ## Opis projektu
 Jest to implementacja klasycznej gry logicznej Mastermind w języku Python, wykorzystująca bibliotekę PySide6 do tworzenia interfejsu graficznego. Gracz musi odgadnąć sekretny kod kolorów w ograniczonej liczbie prób.
@@ -11,7 +12,7 @@ Jest to implementacja klasycznej gry logicznej Mastermind w języku Python, wyko
   - 6 różnych kolorów (Czerwony, Niebieski, Zielony, Żółty, Fioletowy, Pomarańczowy)
   - Klikalne pola zmieniające kolory w cyklu
   - Wizualna reprezentacja z nazwami kolorów i stylizowanym tłem
-    
+
 ### `interfejs.py`
 - Główny interfejs gry (klasa `MyApp`)
 - Funkcjonalności:
@@ -36,7 +37,7 @@ Jest to implementacja klasycznej gry logicznej Mastermind w języku Python, wyko
 ### `menu.py`
 - Implementuje menu opcji gry (klasa `OptionsDialog`)
 - Funkcjonalności:
-  - Ustawienie customowej trudności 
+  - Ustawienie customowej trudności
   - Wyświetlanie statystyk
   - Tryb hardcore
 
@@ -45,7 +46,7 @@ Jest to implementacja klasycznej gry logicznej Mastermind w języku Python, wyko
 
 ### `statystyki.txt`
 - Przechowuje statystyki gry:
-  - Pierwsza linia: Liczba wygranych (np. 7) 
+  - Pierwsza linia: Liczba wygranych (np. 7)
   - Druga linia: Liczba przegranych (np. 24)
 
 ### `commity.csv`
