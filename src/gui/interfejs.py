@@ -3,9 +3,9 @@
 from PySide6.QtWidgets import QLabel, QDialog, QPushButton, QScrollArea, QVBoxLayout, QWidget
 from PySide6.QtGui import Qt
 
-from losowanie_kolorów import Kolor, sprawdz_kod
-from menu import OptionsDialog
-from boxy_kolorowe import ColorBox
+from rand.losowanie_kolorów import Kolor, sprawdz_kod
+from gui.menu import OptionsDialog
+from gui.boxy_kolorowe import ColorBox
 
 #hellowathever
 
@@ -19,11 +19,11 @@ class MyApp(QWidget):
             # Zapisujemy stare wartości do porównania
             old_max_attempts = self.max_attempts
             old_ilość_boxów = self.ilość_boxów
-            
+
             # Aktualizujemy wartości
             self.max_attempts = dialog.max_attempts
             self.ilość_boxów = dialog.ilość_boxów
-            
+
             # Resetujemy grę tylko jeśli trudność się zmieniła
             if old_max_attempts != self.max_attempts or old_ilość_boxów != self.ilość_boxów:
                 self.reset_game()
@@ -46,7 +46,7 @@ class MyApp(QWidget):
         self.hardcore_mode = False
 
         # Statystyki
-        self.statystyki_plik = "statystyki.txt"
+        self.statystyki_plik = "src/rand/statystyki.txt"
         self.wygrane = 0
         self.przegrane = 0
         self.wczytaj_statystyki()
