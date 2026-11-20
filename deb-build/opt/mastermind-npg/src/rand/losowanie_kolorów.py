@@ -43,7 +43,7 @@ def sprawdz_kod(propozycja, tajny_kod, ilość_boxów):
             except ValueError:
                 pass  # Nie znaleziono w tajnym kodzie
 
-    print(wynik)
+    # print(wynik)
     return wynik
 
 

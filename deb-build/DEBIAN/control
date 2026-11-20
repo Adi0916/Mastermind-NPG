@@ -1,8 +1,8 @@
-Package: mastermind-npg
+Package: mastermind
 Version: 0.1.0
 Section: games
 Priority: optional
-Architecture: amd64
-Depends: bash
+Architecture: all
+Depends: python3 (>= 3.10), python3-pyside6.qtwidgets, python3-pyside6.qtgui
 Maintainer: misko <michal.290305.sk@gmail.com>
-Description: Mastermind NPG with bundled virtual environment
+Description: Mastermind NPG in Python using system PySide6 packages

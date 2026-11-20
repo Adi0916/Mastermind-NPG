@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-export PYTHONPATH="/opt/mastermind-npg/src${PYTHONPATH:+:$PYTHONPATH}"
-exec /opt/mastermind-npg/.venv/bin/python /opt/mastermind-npg/src/mastermind_npg/__init__.py "$@"

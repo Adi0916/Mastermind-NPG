@@ -7,6 +7,7 @@ from rand.losowanie_kolorów import Kolor, sprawdz_kod
 from gui.menu import OptionsDialog
 from gui.boxy_kolorowe import ColorBox
 
+from pathlib import Path
 
 class MyApp(QWidget):
 
@@ -79,7 +80,7 @@ class MyApp(QWidget):
 
     def wczytaj_statystyki(self):
         try:
-            with open(self.statystyki_plik, "r") as f:
+            with open(self.statystyki_plik, "r", encoding="utf-8") as f:
                 linie = f.readlines()
                 self.wygrane = int(linie[0].strip())
                 self.przegrane = int(linie[1].strip())
@@ -88,7 +89,12 @@ class MyApp(QWidget):
             self.przegrane = 0
 
     def zapisz_statystyki(self):
-        with open(self.statystyki_plik, "w") as f:
+        stats_dir = Path.home() / ".local" / "share" / "mastermind-npg"
+        stats_dir.mkdir(parents=True, exist_ok=True)
+        self.statystyki_plik = stats_dir / "statystyki.txt"
+        sciezka = Path(self.statystyki_plik)
+        sciezka.parent.mkdir(parents=True, exist_ok=True)
+        with open(sciezka, "w", encoding="utf-8") as f:
             f.write(f"{self.wygrane}\n{self.przegrane}")
 
     def tajny_kod_na_emoji(self):
